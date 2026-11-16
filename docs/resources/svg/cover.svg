@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Three.js 从入门到实战</title>
+  <desc id="desc">深色背景上的三维线框几何体与全书标题</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101b26"/>
+      <stop offset="0.58" stop-color="#172c3a"/>
+      <stop offset="1" stop-color="#075c70"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#36d5ed" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#36d5ed" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#b8edf4" stroke-opacity=".055"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="22" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="22" fill="url(#grid)"/>
+  <ellipse cx="910" cy="300" rx="360" ry="330" fill="url(#glow)"/>
+  <g transform="translate(825 108)" fill="none" stroke="#73e5f2" stroke-width="2" filter="url(#shadow)">
+    <path d="M110 10 280 96v198l-170 92L-58 296V98Z" fill="#1b7080" fill-opacity=".12"/>
+    <path d="m110 10 2 192 168-106M112 202 280 294M112 202-58 296M112 202-58 98M110 10-58 98v198l170 90 168-92V96Z"/>
+    <path d="m-58 98 170 104L280 96M-58 296l170-94 168 92" stroke-opacity=".65"/>
+    <circle cx="110" cy="10" r="5" fill="#d9fbff"/>
+    <circle cx="-58" cy="98" r="5" fill="#d9fbff"/>
+    <circle cx="280" cy="96" r="5" fill="#d9fbff"/>
+    <circle cx="112" cy="202" r="6" fill="#d9fbff"/>
+    <circle cx="-58" cy="296" r="5" fill="#d9fbff"/>
+    <circle cx="280" cy="294" r="5" fill="#d9fbff"/>
+    <circle cx="110" cy="386" r="5" fill="#d9fbff"/>
+  </g>
+  <g transform="translate(1000 470)" fill="none" stroke="#a8f2cd" stroke-width="1.6" opacity=".72">
+    <path d="M0-70 62-35v70L0 70-62 35v-70Z"/>
+    <path d="M0-70V0m0 0 62-35M0 0l-62-35M0 0v70M62-35 0 70-62 35 0-70"/>
+  </g>
+  <g font-family="Inter, 'Noto Sans SC', 'Microsoft YaHei', sans-serif">
+    <text x="86" y="115" fill="#8ee9f3" font-size="22" font-weight="600" letter-spacing="4">WEBGL · GLSL · REACT THREE FIBER</text>
+    <text x="82" y="230" fill="#f4fbfd" font-size="66" font-weight="750">Three.js</text>
+    <text x="82" y="310" fill="#f4fbfd" font-size="56" font-weight="650">从入门到实战</text>
+    <rect x="86" y="352" width="72" height="4" rx="2" fill="#53d9e9"/>
+    <text x="86" y="407" fill="#c1d7df" font-size="24">场景渲染 · 着色器 · Blender 工作流 · 项目实践</text>
+    <text x="86" y="535" fill="#8daab5" font-size="18">6 个部分 · 45 章 · 中文技术教程</text>
+  </g>
+</svg>

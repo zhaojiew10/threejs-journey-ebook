@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">EffectComposer 后期处理链</title>
+  <desc id="desc">场景先经 RenderPass 渲染到离屏目标，再依次通过效果通道，最后由 OutputPass 输出到屏幕</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 9 3 0 6Z" fill="#52788a"/></marker><style>.box{fill:#fff;stroke:#96b4c1;stroke-width:2}.stage{fill:#eaf7f8;stroke:#3ca0b0;stroke-width:2}.arrow{fill:none;stroke:#52788a;stroke-width:2.5;marker-end:url(#a)}.title{font:700 26px 'Microsoft YaHei',sans-serif;fill:#173444}.label{font:600 20px 'Microsoft YaHei',sans-serif;fill:#173444}.small{font:16px 'Microsoft YaHei',sans-serif;fill:#526c78}</style></defs>
+  <rect width="1200" height="620" rx="18" fill="#f6f9fb"/>
+  <text class="title" x="600" y="55" text-anchor="middle">从场景渲染到最终画面：EffectComposer</text>
+  <g>
+    <rect class="box" x="40" y="120" width="190" height="120" rx="14"/><text class="label" x="135" y="166" text-anchor="middle">Scene + Camera</text><text class="small" x="135" y="200" text-anchor="middle">原始三维场景</text>
+    <rect class="stage" x="280" y="120" width="190" height="120" rx="14"/><text class="label" x="375" y="166" text-anchor="middle">RenderPass</text><text class="small" x="375" y="200" text-anchor="middle">渲染到离屏目标</text>
+    <rect class="box" x="520" y="120" width="190" height="120" rx="14"/><text class="label" x="615" y="166" text-anchor="middle">Effect Passes</text><text class="small" x="615" y="200" text-anchor="middle">Bloom · 景深 · 颜色</text>
+    <rect class="stage" x="760" y="120" width="190" height="120" rx="14"/><text class="label" x="855" y="166" text-anchor="middle">OutputPass</text><text class="small" x="855" y="200" text-anchor="middle">色调映射与色彩空间</text>
+    <rect class="box" x="1000" y="120" width="160" height="120" rx="14"/><text class="label" x="1080" y="166" text-anchor="middle">屏幕</text><text class="small" x="1080" y="200" text-anchor="middle">最终合成画面</text>
+    <path class="arrow" d="M230 180H270"/><path class="arrow" d="M470 180H510"/><path class="arrow" d="M710 180H750"/><path class="arrow" d="M950 180H990"/>
+  </g>
+  <rect class="box" x="230" y="335" width="740" height="160" rx="18"/>
+  <text class="label" x="600" y="378" text-anchor="middle">在渲染目标之间交换图像</text>
+  <text class="small" x="600" y="418" text-anchor="middle">每个通道读取上一通道的纹理，并将处理结果写入下一渲染目标</text>
+  <text class="small" x="600" y="454" text-anchor="middle">通道顺序会影响视觉效果；分辨率、采样和通道数量会影响性能</text>
+  <path class="arrow" d="M615 240V325"/>
+  <text class="small" x="600" y="560" text-anchor="middle">后期处理不是“免费滤镜”：应同时检查视觉收益与 GPU 开销</text>
+</svg>

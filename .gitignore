@@ -1,0 +1,11 @@
+site/
+node_modules/
+.venv/
+.lanes/
+reference/
+*.log
+*.pid
+.env
+.env.*
+!.env.example
+.DS_Store

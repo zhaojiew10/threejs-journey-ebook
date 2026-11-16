@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Three.js 场景图与渲染器</title>
+  <desc id="desc">场景包含相机、灯光和对象组，网格由几何体和材质组成，渲染器根据场景与相机绘制画面</desc>
+  <defs><style>
+    .node{fill:#fff;stroke:#8fb0bf;stroke-width:2}.core{fill:#eaf7f8;stroke:#39a0b0}.leaf{fill:#f7f3ea;stroke:#c9aa67}.line{stroke:#7395a3;stroke-width:2.5;fill:none}.title{font:700 26px 'Microsoft YaHei',sans-serif;fill:#173444}.label{font:600 21px 'Microsoft YaHei',sans-serif;fill:#173444}.small{font:16px 'Microsoft YaHei',sans-serif;fill:#526c78}
+  </style></defs>
+  <rect width="1200" height="700" rx="18" fill="#f6f9fb"/>
+  <text x="600" y="52" text-anchor="middle" class="title">场景图：对象之间的关系</text>
+  <rect class="node core" x="490" y="90" width="220" height="72" rx="14"/>
+  <text class="label" x="600" y="135" text-anchor="middle">Scene 场景</text>
+  <path class="line" d="M600 162V200M210 200H990M210 200V240M600 200V240M990 200V240"/>
+  <g>
+    <rect class="node" x="95" y="240" width="230" height="86" rx="12"/><text class="label" x="210" y="278" text-anchor="middle">Camera 相机</text><text class="small" x="210" y="307" text-anchor="middle">决定视图与投影</text>
+    <rect class="node" x="485" y="240" width="230" height="86" rx="12"/><text class="label" x="600" y="278" text-anchor="middle">Group 对象组</text><text class="small" x="600" y="307" text-anchor="middle">统一管理子对象变换</text>
+    <rect class="node" x="875" y="240" width="230" height="86" rx="12"/><text class="label" x="990" y="278" text-anchor="middle">Light 灯光</text><text class="small" x="990" y="307" text-anchor="middle">参与材质光照计算</text>
+  </g>
+  <path class="line" d="M600 326V370M430 370H770M430 370V410M770 370V410"/>
+  <g>
+    <rect class="node core" x="315" y="410" width="230" height="86" rx="12"/><text class="label" x="430" y="448" text-anchor="middle">Mesh 网格</text><text class="small" x="430" y="477" text-anchor="middle">可渲染的三维对象</text>
+    <rect class="node" x="655" y="410" width="230" height="86" rx="12"/><text class="label" x="770" y="448" text-anchor="middle">Points / Line</text><text class="small" x="770" y="477" text-anchor="middle">粒子或线条对象</text>
+  </g>
+  <path class="line" d="M430 496V535M285 535H575M285 535V570M575 535V570"/>
+  <rect class="node leaf" x="170" y="570" width="230" height="76" rx="12"/><text class="label" x="285" y="616" text-anchor="middle">BufferGeometry</text>
+  <rect class="node leaf" x="460" y="570" width="230" height="76" rx="12"/><text class="label" x="575" y="616" text-anchor="middle">Material</text>
+  <rect class="node" x="800" y="555" width="310" height="100" rx="14"/>
+  <text class="label" x="955" y="594" text-anchor="middle">WebGLRenderer</text><text class="small" x="955" y="626" text-anchor="middle">renderer.render(scene, camera)</text>
+  <path class="line" d="M990 326V555M710 126H1140V525H1110" stroke-dasharray="7 6"/>
+  <text class="small" x="1010" y="675" text-anchor="middle">渲染时传入场景与相机</text>
+</svg>

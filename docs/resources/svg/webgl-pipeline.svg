@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 610" role="img" aria-labelledby="title desc">
+  <title id="title">从 JavaScript 到屏幕像素的 WebGL 渲染流程</title>
+  <desc id="desc">场景、相机与材质经 Three.js 组织，由 WebGL 调用 GPU 的顶点处理、光栅化和片元处理，最终显示在画布中</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 9 3 0 6Z" fill="#4b7285"/></marker>
+    <style>
+      .box{fill:#fff;stroke:#a9c3ce;stroke-width:2}.gpu{fill:#eef9fa;stroke:#49a9b8}.title{font:700 25px 'Microsoft YaHei',sans-serif;fill:#173444}.label{font:600 21px 'Microsoft YaHei',sans-serif;fill:#173444}.small{font:17px 'Microsoft YaHei',sans-serif;fill:#49636f}.arrow{stroke:#4b7285;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="610" rx="18" fill="#f5f9fb"/>
+  <text x="600" y="55" text-anchor="middle" class="title">从场景描述到屏幕像素</text>
+  <g>
+    <rect class="box" x="55" y="110" width="220" height="140" rx="14"/>
+    <text class="label" x="165" y="155" text-anchor="middle">JavaScript 应用</text>
+    <text class="small" x="165" y="191" text-anchor="middle">几何体 · 材质 · 灯光</text>
+    <text class="small" x="165" y="220" text-anchor="middle">场景与相机</text>
+    <rect class="box" x="350" y="110" width="220" height="140" rx="14"/>
+    <text class="label" x="460" y="155" text-anchor="middle">Three.js</text>
+    <text class="small" x="460" y="191" text-anchor="middle">组织场景图与渲染状态</text>
+    <text class="small" x="460" y="220" text-anchor="middle">生成 WebGL 调用</text>
+    <rect class="box" x="645" y="110" width="220" height="140" rx="14"/>
+    <text class="label" x="755" y="155" text-anchor="middle">WebGL</text>
+    <text class="small" x="755" y="191" text-anchor="middle">浏览器图形接口</text>
+    <text class="small" x="755" y="220" text-anchor="middle">向 GPU 提交绘制命令</text>
+    <rect class="box" x="940" y="110" width="205" height="140" rx="14"/>
+    <text class="label" x="1042" y="155" text-anchor="middle">Canvas</text>
+    <text class="small" x="1042" y="191" text-anchor="middle">接收最终颜色缓冲</text>
+    <text class="small" x="1042" y="220" text-anchor="middle">显示在网页中</text>
+    <path class="arrow" d="M275 180H340"/><path class="arrow" d="M570 180H635"/><path class="arrow" d="M865 180H930"/>
+  </g>
+  <rect x="165" y="315" width="870" height="225" rx="20" fill="#e4f3f5" stroke="#8cc8d1" stroke-width="2"/>
+  <text class="label" x="600" y="355" text-anchor="middle">GPU 图形渲染管线</text>
+  <g>
+    <rect class="box gpu" x="205" y="395" width="210" height="100" rx="12"/>
+    <text class="label" x="310" y="435" text-anchor="middle">顶点着色器</text>
+    <text class="small" x="310" y="468" text-anchor="middle">计算顶点位置与插值数据</text>
+    <rect class="box gpu" x="495" y="395" width="210" height="100" rx="12"/>
+    <text class="label" x="600" y="435" text-anchor="middle">图元装配与光栅化</text>
+    <text class="small" x="600" y="468" text-anchor="middle">将三角形转换为片元</text>
+    <rect class="box gpu" x="785" y="395" width="210" height="100" rx="12"/>
+    <text class="label" x="890" y="435" text-anchor="middle">片元着色器</text>
+    <text class="small" x="890" y="468" text-anchor="middle">计算颜色、纹理与光照</text>
+    <path class="arrow" d="M415 445H485"/><path class="arrow" d="M705 445H775"/>
+  </g>
+  <path class="arrow" d="M755 250V280H1042V280V100" opacity=".65"/>
+  <text class="small" x="600" y="580" text-anchor="middle">Three.js 封装底层细节，同时保留对着色器和渲染过程的扩展能力</text>
+</svg>

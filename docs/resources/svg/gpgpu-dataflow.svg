@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" role="img" aria-labelledby="title desc">
+  <title id="title">GPGPU 粒子模拟的 Ping-Pong 数据流</title>
+  <desc id="desc">粒子位置保存在数据纹理中，模拟着色器在两张渲染目标之间交替读写，顶点着色器采样位置纹理绘制粒子</desc>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 9 3 0 6Z" fill="#52788a"/></marker>
+    <style>.box{fill:#fff;stroke:#96b4c1;stroke-width:2}.stage{fill:#eaf7f8;stroke:#3ca0b0;stroke-width:2}.data{fill:#f8f3e9;stroke:#c7a768;stroke-width:2}.arrow{fill:none;stroke:#52788a;stroke-width:2.5;marker-end:url(#a)}.dash{stroke-dasharray:7 6}.title{font:700 26px 'Microsoft YaHei',sans-serif;fill:#173444}.label{font:600 21px 'Microsoft YaHei',sans-serif;fill:#173444}.code{font:16px Consolas,monospace;fill:#405d6a}.small{font:16px 'Microsoft YaHei',sans-serif;fill:#526c78}</style>
+  </defs>
+  <rect width="1200" height="740" rx="18" fill="#f6f9fb"/>
+  <text class="title" x="600" y="52" text-anchor="middle">用纹理保存粒子状态：GPGPU Ping-Pong</text>
+  <g>
+    <rect class="data" x="60" y="105" width="265" height="110" rx="14"/><text class="label" x="192" y="145" text-anchor="middle">初始数据纹理</text><text class="small" x="192" y="177" text-anchor="middle">每个纹素对应一个粒子</text><text class="code" x="103" y="201">RGBA → x, y, z, w</text>
+    <rect class="data" x="465" y="100" width="270" height="115" rx="14"/><text class="label" x="600" y="140" text-anchor="middle">Render Target A</text><text class="small" x="600" y="173" text-anchor="middle">保存当前帧位置 / 速度</text><text class="code" x="513" y="199">textureA = currentState</text>
+    <rect class="stage" x="875" y="95" width="270" height="165" rx="14"/><text class="label" x="1010" y="135" text-anchor="middle">模拟片元着色器</text><text class="small" x="1010" y="167" text-anchor="middle">采样流场并更新状态</text><text class="code" x="920" y="204">newPosition = position</text><text class="code" x="955" y="231">+ velocity * dt</text>
+    <path class="arrow" d="M325 157H455"/><path class="arrow" d="M735 157H865"/>
+  </g>
+  <g>
+    <rect class="data" x="465" y="345" width="270" height="115" rx="14"/><text class="label" x="600" y="385" text-anchor="middle">Render Target B</text><text class="small" x="600" y="418" text-anchor="middle">保存模拟后的新状态</text><text class="code" x="510" y="444">textureB = nextState</text>
+    <path class="arrow" d="M1010 260V305H600V335"/>
+    <path class="arrow" d="M600 460V500H1010V490H1145V270" />
+    <text class="small" x="935" y="523">下一帧交换输入与输出</text>
+  </g>
+  <g>
+    <rect class="stage" x="65" y="500" width="290" height="140" rx="14"/><text class="label" x="210" y="540" text-anchor="middle">粒子顶点着色器</text><text class="small" x="210" y="573" text-anchor="middle">根据 UV 采样最新位置纹理</text><text class="code" x="100" y="610">texture2D(uPositions, uv)</text>
+    <rect class="box" x="465" y="590" width="270" height="90" rx="14"/><text class="label" x="600" y="629" text-anchor="middle">Points 粒子绘制</text><text class="small" x="600" y="658" text-anchor="middle">大量粒子共享 GPU 状态</text>
+    <path class="arrow dash" d="M465 402H390V570H355"/><path class="arrow" d="M355 620H455"/>
+  </g>
+  <text class="small" x="900" y="675" text-anchor="middle">避免每帧把全部粒子位置传回 CPU</text>
+</svg>

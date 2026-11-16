@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">可编程着色器的数据流</title>
+  <desc id="desc">属性和 uniform 输入顶点着色器，varying 经光栅化插值后进入片元着色器，最终写入帧缓冲</desc>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 9 3 0 6Z" fill="#52788a"/></marker>
+    <style>.box{fill:#fff;stroke:#96b4c1;stroke-width:2}.stage{fill:#eaf7f8;stroke:#3ca0b0;stroke-width:2}.data{fill:#f8f3e9;stroke:#c7a768;stroke-width:2}.arrow{fill:none;stroke:#52788a;stroke-width:2.5;marker-end:url(#a)}.dash{stroke-dasharray:7 6}.title{font:700 26px 'Microsoft YaHei',sans-serif;fill:#173444}.label{font:600 21px 'Microsoft YaHei',sans-serif;fill:#173444}.code{font:17px Consolas,monospace;fill:#405d6a}.small{font:16px 'Microsoft YaHei',sans-serif;fill:#526c78}</style>
+  </defs>
+  <rect width="1200" height="720" rx="18" fill="#f6f9fb"/>
+  <text class="title" x="600" y="52" text-anchor="middle">顶点、插值与片元：着色器如何协作</text>
+  <g>
+    <rect class="data" x="45" y="100" width="250" height="105" rx="12"/><text class="label" x="170" y="140" text-anchor="middle">Attributes 属性</text><text class="small" x="170" y="171" text-anchor="middle">每个顶点一份数据</text><text class="code" x="70" y="195">position · uv · normal</text>
+    <rect class="stage" x="390" y="95" width="330" height="160" rx="16"/><text class="label" x="555" y="137" text-anchor="middle">顶点着色器</text><text class="small" x="555" y="169" text-anchor="middle">每个顶点执行一次</text><text class="code" x="430" y="205">gl_Position = projectionMatrix</text><text class="code" x="450" y="231">* viewMatrix * modelMatrix ...</text>
+    <rect class="box" x="810" y="100" width="330" height="105" rx="12"/><text class="label" x="975" y="140" text-anchor="middle">图元装配与光栅化</text><text class="small" x="975" y="174" text-anchor="middle">覆盖像素并对 varying 插值</text>
+    <path class="arrow" d="M295 152H380"/><path class="arrow" d="M720 152H800"/>
+  </g>
+  <g>
+    <rect class="data" x="45" y="315" width="250" height="105" rx="12"/><text class="label" x="170" y="355" text-anchor="middle">Uniforms 统一变量</text><text class="small" x="170" y="387" text-anchor="middle">一次绘制中保持不变</text><text class="code" x="70" y="411">time · color · texture</text>
+    <rect class="data" x="425" y="315" width="260" height="105" rx="12"/><text class="label" x="555" y="355" text-anchor="middle">Varyings 插值变量</text><text class="small" x="555" y="387" text-anchor="middle">从顶点传递到片元</text><text class="code" x="475" y="411">vUv · vNormal · vPosition</text>
+    <path class="arrow dash" d="M295 345H350V210H380"/><path class="arrow dash" d="M295 390H350V545H800"/><path class="arrow" d="M555 255V305"/><path class="arrow dash" d="M975 205V285H710V315"/>
+  </g>
+  <g>
+    <rect class="stage" x="810" y="465" width="330" height="160" rx="16"/><text class="label" x="975" y="507" text-anchor="middle">片元着色器</text><text class="small" x="975" y="539" text-anchor="middle">为候选像素计算颜色</text><text class="code" x="875" y="578">gl_FragColor = vec4(...);</text>
+    <rect class="box" x="395" y="490" width="290" height="105" rx="12"/><text class="label" x="540" y="530" text-anchor="middle">帧缓冲</text><text class="small" x="540" y="563" text-anchor="middle">颜色、深度与模板信息</text>
+    <path class="arrow" d="M810 545H695"/>
+    <path class="arrow dash" d="M555 420V450H975V455"/>
+  </g>
+  <text class="small" x="600" y="675" text-anchor="middle">顶点着色器决定“在哪里”，片元着色器决定“呈现什么颜色”</text>
+</svg>
